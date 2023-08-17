@@ -1,0 +1,19 @@
+{
+  "sourceLanguage": "de-DE",
+  "targetLanguage": "en-US",
+
+  "inputBucket": "",
+  "transcribeBucket1": "",
+  "translateBucket1": "",
+  "transcribeBucket2": "",
+  "translateBucket2": "",
+  "synthesizeBucket": "",
+  "outputBucket": "",
+
+  "transcribeProvider1": "GCP",
+  "translateProvider1": "GCP",
+  "synthesizeProvider1": "GCP",
+  "transcribeProvider2": "AWS",
+  "translateProvider2": "AWS",
+  "synthesizeProvider2": "AWS"
+}

@@ -1,0 +1,14 @@
+{
+  "sourceLanguage": "de-DE",
+  "targetLanguage": "en-US",
+
+  "inputBucket": "",
+  "transcribeBucket": "",
+  "translateBucket": "",
+  "synthesizeBucket": "",
+  "outputBucket": "",
+
+  "transcribeProvider": "GCP",
+  "translateProvider": "GCP",
+  "synthesizeProvider": "GCP"
+}
