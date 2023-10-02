@@ -8,6 +8,10 @@
   "synthesizeBucket": "",
   "outputBucket": "",
 
+  "transcribeRegion": "",
+  "translateRegion": "",
+  "synthesizeRegion": "",
+
   "transcribeProvider": "GCP",
   "translateProvider": "GCP",
   "synthesizeProvider": "GCP"
