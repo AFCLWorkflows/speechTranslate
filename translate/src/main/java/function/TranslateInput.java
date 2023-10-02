@@ -13,4 +13,5 @@ public class TranslateInput {
     private String outputBucket;
     private String language;
     private String provider;
+    private String region;
 }

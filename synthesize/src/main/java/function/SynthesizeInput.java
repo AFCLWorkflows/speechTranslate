@@ -13,4 +13,5 @@ public class SynthesizeInput {
     private String outputBucket;
     private String language;
     private String provider;
+    private String region;
 }

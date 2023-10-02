@@ -53,7 +53,7 @@ public class TranslateFunction
             .language(input.getLanguage())
             .build();
     TranslateResponse response =
-        translateService.translate(request, Provider.valueOf(input.getProvider()));
+        translateService.translate(request, Provider.valueOf(input.getProvider()), input.getRegion());
     // write result to output bucket
     Storage storage = new StorageImpl(Credentials.loadDefaultCredentials());
     storage.write(response.getText().getBytes(), outputFile);
@@ -63,10 +63,11 @@ public class TranslateFunction
 
   public static void main(String[] args) throws Exception {
     TranslateInput input = TranslateInput.builder()
-            .inputFile("https://storage.cloud.google.com/tommi-test-bucket/transcribe/recognition-15.txt")
-            .outputBucket("https://storage.cloud.google.com/tommi-test-bucket/")
+            .inputFile("https://storage.cloud.google.com/baassimless-test/sample-1.txt")
+            .outputBucket("https://storage.cloud.google.com/baassimless-test/")
             .language("en-US")
             .provider("GCP")
+            .region("us-west1")//or eu-west1
             .build();
     TranslateFunction function = new TranslateFunction();
     TranslateOutput output = function.doWork(input);

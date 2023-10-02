@@ -33,7 +33,10 @@ be used for testing and debugging. [/docs](docs) contains some figures and docum
 
 Create a credentials.json file in the root folder of the project and insert the AWS and GCP credentials.
 
-```
+The ```gcp_client_credentials``` field is optional to specify GCP Client credentials. 
+They will be used to authenticate to the services when specified, orhterwise the ```gcp_credentials``` will be used. 
+
+```json
 {
   "aws_credentials": {
     "accessKey": "",
@@ -51,6 +54,13 @@ Create a credentials.json file in the root folder of the project and insert the 
     "token_uri": "",
     "auth_provider_x509_cert_url": "",
     "client_x509_cert_url": ""
+  }, 
+  "gcp_client_credentials": {
+    "client_id": "",
+    "client_secret": "",
+    "quota_project_id": "",
+    "refresh_token": "",
+    "type": ""
   }
 }
 ```
@@ -78,6 +88,20 @@ $ terraform init
 $ terraform plan
 $ terraform apply
 ```
+
+# Input
+
+The workflows inputs allow to specify the configuration of the region.
+(See e.g. [/workflow/input-amazon.json](/workflow/input-amazon.json) as an example.)
+
+If the `serviceRegions` are left unspecified or empty the default configuration will be used, which is: 
+
+- closest to the function for `call-by-val`
+- closest to the bucket for `call-by-ref`
+
+## Pitfalls
+Note that different services might only be available for different regions.
+GCP Translate for example only allows `[us-west1, eu-west1]`, while GCP T2S and S2T only allow `[us, eu]`
 
 # Execution
 

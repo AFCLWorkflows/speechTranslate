@@ -56,7 +56,7 @@ public class TranscribeFunction
             .channelCount(1)
             .build();
     SpeechRecognitionResponse response =
-        recognizer.recognizeSpeech(request, Provider.valueOf(input.getProvider()));
+        recognizer.recognizeSpeech(request, Provider.valueOf(input.getProvider()), input.getRegion());
     // write result to output bucket
     Storage storage = new StorageImpl(Credentials.loadDefaultCredentials());
     storage.write(response.getFullTranscript().getBytes(), outputFile);
@@ -66,10 +66,11 @@ public class TranscribeFunction
 
   public static void main(String[] args) throws Exception {
     TranscribeInput input = TranscribeInput.builder()
-            .inputFile("https://storage.cloud.google.com/tommi-test-bucket/recognition-15.wav")
-            .outputBucket("https://storage.cloud.google.com/tommi-test-bucket/")
+            .inputFile("https://storage.cloud.google.com/baassimless-test/sample-1.wav")
+            .outputBucket("https://storage.cloud.google.com/baassimless-test/")
             .language("de-DE")
             .provider("GCP")
+            .region("eu")
             .build();
     TranscribeFunction function = new TranscribeFunction();
     TranscribeOutput output = function.doWork(input);
