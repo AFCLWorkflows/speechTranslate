@@ -8,6 +8,10 @@
   "synthesizeBucket": "",
   "outputBucket": "",
 
+  "transcribeRegion": "",
+  "translateRegion": "",
+  "synthesizeRegion": "",
+
   "transcribeProvider": "AWS",
   "translateProvider": "AWS",
   "synthesizeProvider": "AWS"
