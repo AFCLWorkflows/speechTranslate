@@ -61,7 +61,7 @@ public class SynthesizeFunction
             .language(input.getLanguage())
             .build();
     SpeechSynthesisResponse response =
-        synthesizer.synthesizeSpeech(request, Provider.valueOf(input.getProvider()));
+        synthesizer.synthesizeSpeech(request, Provider.valueOf(input.getProvider()), input.getRegion());
     // convert pcm to wav
     byte[] wav = pcmToWav(response.getAudio(), 16000, 16, 1);
     // write result to output bucket
@@ -87,10 +87,11 @@ public class SynthesizeFunction
     SynthesizeInput input =
         SynthesizeInput.builder()
             .inputFile(
-                "https://tommi-test-bucket.s3.amazonaws.com/translate/recognition-15.txt")
-            .outputBucket("https://tommi-test-bucket.s3.amazonaws.com/")
+                "https://storage.cloud.google.com/baassimless-test/sample-1.txt")
+            .outputBucket("https://storage.cloud.google.com/baassimless-test/")
             .language("en-US")
-            .provider("AWS")
+            .provider("GCP")
+                .region("us")
             .build();
     SynthesizeFunction function = new SynthesizeFunction();
     SynthesizeOutput output = function.doWork(input);
